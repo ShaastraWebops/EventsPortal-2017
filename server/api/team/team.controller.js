@@ -4,7 +4,6 @@ var _ = require('lodash');
 var Team = require('./team.model');
 var User = require('../user/user.model');
 var Event = require('../event/event.model');
-var Registration = require('../registration/registration.model');
 
 // Get list of teams of a user
 exports.index = function(req, res) {
