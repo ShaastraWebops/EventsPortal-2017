@@ -114,7 +114,7 @@ exports.index = function (req, res) {
 
 var createUser = function (req, res, next, callback){
     var newUser = new User(req.body);
-  newUser.role = 'user';
+  newUser.role = 'coord';
   newUser.provider = 'local';
   newUser.createdOn = Date.now();
   newUser.updatedOn = Date.now();

@@ -35,7 +35,7 @@ angular.module('erp2015App')
 
       $http.get('/api/eventTabs/' + event._id).then(function (data) {
         $scope.eventTabs = data.data;
-        // console.log($scope.eventTabs);
+        console.log($scope.eventTabs);
         $scope.eventTabs.sort(function (a, b) {
           if(a.tabNumber<b.tabNumber)
             return -1;

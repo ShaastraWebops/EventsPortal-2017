@@ -5,6 +5,7 @@ angular.module('erp2015App')
     $scope.getCurrentUser = Auth.getCurrentUser;
     $scope.user = {};
     $scope.errors = {};
+    $scope.user.role = 'coord';
 
     $scope.register = function(form) {
       $scope.submitted = true;
