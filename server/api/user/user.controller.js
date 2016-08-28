@@ -35,19 +35,19 @@ function handleError(res, err) {
 function festID (count) {
   var id;
   if(count<10) {
-    id = "SHA160000" + count.toString();
+    id = "SHA170000" + count.toString();
   }
   else if(count>9 && count<100) {
-    id="SHA16000" + count.toString();
+    id="SHA17000" + count.toString();
   }
   else if(count>99 && count<1000) {
-    id="SHA1600" + count.toString();
+    id="SHA1700" + count.toString();
   }
   else if(count>999 && count<10000) {
-    id="SHA160" + count.toString();
+    id="SHA170" + count.toString();
   }
   else if(count>9999 && count<100000) {
-    id = "SHA16" + count.toString();
+    id = "SHA17" + count.toString();
   }
   return id;
 }
