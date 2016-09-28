@@ -110,6 +110,47 @@ exports.create = function(req, res) {
   });
 };
 
+exports.registerEvent = function(req, res) {
+  console.log(req.body);
+  // if(req.body._id) { delete req.body._id; }
+  var duplicate = 0;
+  Team.findById(req.body.team, function(err, team){
+    if (err) { return handleError(res, err); }
+    if(!team) { return res.send(404); }
+    else {
+      var registeredEvents = team.eventsRegistered;
+      for(var i=0; i<registeredEvents.length; i++){
+        if(registeredEvents[i] == req.body.eventRegistered){
+          duplicate = 1;
+        }
+      }
+
+      if(duplicate == 0){
+        Event.findByIdAndUpdate(
+          req.body.eventRegistered,
+          {$push: {"registeredTeams": req.body.team}},
+          {new : true},
+          function(err, model) {
+          }
+        );
+
+        Team.findByIdAndUpdate(
+          req.body.team,
+          {$push: {"eventsRegistered": req.body.eventRegistered}},
+          {new : true},
+          function(err, model) {
+              return res.status(200).json(model);
+          }
+        );
+      }
+      else{
+        return res.status(204).json("You have already registered for this event");
+      }
+    }
+  });
+};
+
+
 // Updates an existing team in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
@@ -173,19 +214,44 @@ exports.destroy = function(req, res) {
     if(!team) { return res.sendStatus(404); }
     else {
       if(team.teamLeader.equals(req.user._id)) {
-        team.remove(function (err) {
-          if(err) { return handleError(res, err); }
-          else {
-            Registration.find({ team: req.params.id }).remove(function () {
-              return res.sendStatus(204);
-            });
-          }
-        });
+        for(var i=0; i<team.eventsRegistered.length; i++){
+          Event.findByIdAndUpdate(
+            team.eventsRegistered[i],
+            {$pull: {"registeredTeams": req.params.id}},
+            {new : true},
+            function(err, model) {
+              team.remove(function(){
+                res.send(204);
+              });
+            }
+          );
+        }
+
       } else {
         return res.send(403).json('Only team leader can delete the team');
       }
     }
   });
+};
+
+exports.destroyRegistration = function(req, res) {
+
+  Event.findByIdAndUpdate(
+    req.params.eventid,
+    {$pull: {"registeredTeams": req.params.teamid}},
+    {new : true},
+    function(err, model) {
+      Team.findByIdAndUpdate(
+        req.params.teamid,
+        {$pull: {"eventsRegistered": req.params.eventid}},
+        {new : true},
+        function(err, model) {
+          return res.status(200).json(model);
+        }
+      );
+    }
+  );
+  
 };
 
 function handleError(res, err) {
