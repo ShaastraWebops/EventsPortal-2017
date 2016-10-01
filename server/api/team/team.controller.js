@@ -21,7 +21,7 @@ exports.index = function(req, res) {
       var events = {
         path: 'teams.eventsRegistered',
         model: 'Event',
-        select: 'name startReg endReg'
+        select: 'name startReg endReg requireTDP'
       };
       User.populate(user, name, function (err, teams) {
         // console.log(teams.teams);

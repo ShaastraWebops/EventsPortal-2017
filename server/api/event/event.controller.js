@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var EventList = require('../eventList/eventList.model');
 var Event = require('./event.model');
+var User = require('../user/user.model');
 
 // Get list of events
 exports.index = function(req, res) {
@@ -42,10 +43,18 @@ exports.show = function(req, res) {
   .populate('eventCategory', 'title')
   .populate('tdpform', '_id')
   .populate('marqueeNotifs')
-  .exec(function (err, event) {
-    if(err) { return handleError(res, err); }
-    if(!event) { return res.sendStatus(404); }
-    return res.json(event);
+  .populate('registeredTeams')
+  .exec(function (err, events) {
+
+      User.populate(events, {
+        path: 'registeredTeams.teamLeader'
+      }, function(err, event){
+        if(err) { return handleError(res, err); }
+        if(!event) { return res.sendStatus(404); }
+        return res.json(event);
+      });
+
+    
   });
 };
 

@@ -114,7 +114,7 @@ exports.index = function (req, res) {
 
 var createUser = function (req, res, next, callback){
     var newUser = new User(req.body);
-  newUser.role = 'coord';
+  newUser.role = 'user';
   newUser.provider = 'local';
   newUser.createdOn = Date.now();
   newUser.updatedOn = Date.now();
@@ -403,7 +403,7 @@ exports.show = function (req, res, next) {
   User.findById(userId, function (err, user) {
     if (err) return next(err);
     if (!user) return res.sendStatus(401);
-    res.json(user.profile);
+    res.json(user);
   });
 };
 
