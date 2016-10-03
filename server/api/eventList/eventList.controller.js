@@ -42,8 +42,7 @@ exports.show = function(req, res) {
 exports.showEvents = function(req, res) {
   EventList.findById(req.params.id)
   .populate({
-    path: 'events',
-    match: { isEvent: true }
+    path: 'events'
   })
   .sort({'title':1})
   .exec(function (err, eventList) {
