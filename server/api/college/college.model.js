@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 
 var CollegeSchema = new Schema({
   collegeName: String,
-  createdOn: { type: Date, default: Date.now() }
+  createdOn: { type: Date, default: Date.now() },
+  students: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
 module.exports = mongoose.model('College', CollegeSchema);
