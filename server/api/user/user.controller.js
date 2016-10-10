@@ -315,14 +315,14 @@ exports.QmsCreateUser = function (req, res) {
       return;
     });
 
-    var text_body = "Hello " + user.name + " " + user.secondName + ",\nGreetings from Shaastra-2016 team.\n\nWe are delighted to have you as a registered member.\n\nYou can create your teams and register to events or workshops in your Dashboard(http://shaastra.org/#/dashboard).\n\nThis year Shaastra will open up exciting new avenues for you and make you see tech in a way that you've never seen before. The host of events, shows and workshops that we have lined up will certainly leave you awe-inspired and wanting more. All that we ask in return is a crazy amount of enthusiasm!! Stay tuned to our pages for regular updates,\nFacebook: https://www.facebook.com/Shaastra/\nTwitter: https://twitter.com/ShaastraIITM\nYouTube: https://www.youtube.com/user/iitmshaastra\n\nBest,\nShaastra 2016 team";
-    var html_body = "<table style=\"background-color: #f3f3f3; font-family: verdana, tahoma, sans-serif; color: black; padding: 30px;\"> <tr> <td> <h2>Hello " + user.name + " " + user.secondName + ",</h2> <p>Greetings from Shaastra-2016 team.</p> <p>We are delighted to have you as a registered member.</p> <p>You can create your teams and register to events or workshops in your <a target='_blank' href='http://shaastra.org/#/dashboard'>Dashboard</a>.</p> <p>This year Shaastra will open up exciting new avenues for you and make you see tech in a way that you've never seen before. The host of events, shows and workshops that we have lined up will certainly leave you awe-inspired and wanting more. All that we ask in return is a crazy amount of enthusiasm!! Stay tuned to our pages for regular updates,</p> <p> <a target='_blank' href='https://www.facebook.com/Shaastra/'>Facebook</a>, <a target='_blank' href='https://twitter.com/ShaastraIITM'>Twitter</a>, <a target='_blank' href='https://www.youtube.com/user/iitmshaastra'>YouTube</a> </p> Best,<br/> Shaastra 2016 team</p> </td> </tr> </table>";
+    var text_body = "Hello " + user.name + " " + user.secondName + ",\nGreetings from Shaastra-2017 team.\n\nWe are delighted to have you as a registered member.\n\nYou can create your teams and register to events or workshops in your Dashboard(http://shaastra.org/#/dashboard).\n\nThis year Shaastra will open up exciting new avenues for you and make you see tech in a way that you've never seen before. The host of events, shows and workshops that we have lined up will certainly leave you awe-inspired and wanting more. All that we ask in return is a crazy amount of enthusiasm!! Stay tuned to our pages for regular updates,\nFacebook: https://www.facebook.com/Shaastra/\nTwitter: https://twitter.com/ShaastraIITM\nYouTube: https://www.youtube.com/user/iitmshaastra\n\nBest,\nShaastra 2017 team";
+    var html_body = "<table style=\"background-color: #f3f3f3; font-family: verdana, tahoma, sans-serif; color: black; padding: 30px;\"> <tr> <td> <h2>Hello " + user.name + " " + user.secondName + ",</h2> <p>Greetings from Shaastra-2017 team.</p> <p>We are delighted to have you as a registered member.</p> <p>You can create your teams and register to events or workshops in your <a target='_blank' href='http://shaastra.org/#/dashboard'>Dashboard</a>.</p> <p>This year Shaastra will open up exciting new avenues for you and make you see tech in a way that you've never seen before. The host of events, shows and workshops that we have lined up will certainly leave you awe-inspired and wanting more. All that we ask in return is a crazy amount of enthusiasm!! Stay tuned to our pages for regular updates,</p> <p> <a target='_blank' href='https://www.facebook.com/Shaastra/'>Facebook</a>, <a target='_blank' href='https://twitter.com/ShaastraIITM'>Twitter</a>, <a target='_blank' href='https://www.youtube.com/user/iitmshaastra'>YouTube</a> </p> Best,<br/> Shaastra 2017 team</p> </td> </tr> </table>";
     var params = {
       to: user.email,
       from: 'support@shaastra.org',
       fromname: 'Shaastra WebOps',
-      subject: 'Welcome to Shaastra 2016',
-      replyto: 'chinni@shaastra.org',
+      subject: 'Welcome to Shaastra 2017',
+      replyto: 'minu@shaastra.org',
       text: text_body,
       html: html_body
     };
@@ -629,6 +629,7 @@ exports.addSubDepartment = function(req, res, next) {
  * @return {[type]}     [description]
  */
 exports.forgotPassword = function(req, res, next) {
+  console.log("Came here you");
 
   async.waterfall([
     function (done) {
@@ -652,27 +653,27 @@ exports.forgotPassword = function(req, res, next) {
     },
     function (token, user, done) {
 
-      var text_body = "Hello " + user.name + " " + user.secondName + ",\nGreetings from Shaastra-2016 team.\n\n" +
+      var text_body = "Hello " + user.name + " " + user.secondName + ",\nGreetings from Shaastra-2017 team.\n\n" +
         "You have received this email since you have requested for password change for your Shaastra account.\n\n" +
         "Please click on the following link, or paste this into your browser to complete the process:\n" +
         "http://shaastra.org/#/reset-password/" + token + "\n" +
         "If you did not request this, please ignore this email and your password will remain unchanged." +
-        "Best,\nShaastra 2016 team";
+        "Best,\nShaastra 2017 team";
       var html_body = "<table style=\"background-color: #f3f3f3; font-family: verdana, tahoma, sans-serif; color: black; padding: 30px;\">" +
         "<tr> <td>" +
         "<h2>Hello " + user.name + " " + user.secondName + ",</h2>" +
-        "<p>Greetings from Shaastra-2016 team.</p>" +
+        "<p>Greetings from Shaastra-2017 team.</p>" +
         "<p>You have received this email since you have requested for password change for your Shaastra account.</p>" +
         "<p>Please click on the following link, or paste this into your browser to complete the process:" +
         "<p>http://shaastra.org/#/reset-password/" + token + "</p>"
         "<p>If you did not request this, please ignore this email and your password will remain unchanged.</p>" +
-        "Best,<br/> Shaastra 2016 team</p> </td> </tr> </table>";
+        "Best,<br/> Shaastra 2017 team</p> </td> </tr> </table>";
       var params = {
         to: user.email,
         from: 'support@shaastra.org',
         fromname: 'Shaastra WebOps',
         subject: 'Account Password Reset - Shaastra',
-        replyto: 'chinni@shaastra.org',
+        replyto: 'minu@shaastra.org',
         text: text_body,
         html: html_body
       };
@@ -702,7 +703,7 @@ exports.forgotPassword = function(req, res, next) {
  */
 exports.resetPassword = function(req, res) {
   console.log(req.params);
-  console.log(req.body);
+  console.log(req.body.newPassword);
   User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
     if(err) { return handleError(res, err); }
     if(!user) { return res.sendStatus(404); }
@@ -712,21 +713,21 @@ exports.resetPassword = function(req, res) {
     user.save(function (err, user) {
       if(err) { return handleError(res, err); }
 
-      var text_body = "Hello " + user.name + " " + user.secondName + ",\nGreetings from Shaastra-2016 team.\n\n" +
+      var text_body = "Hello " + user.name + " " + user.secondName + ",\nGreetings from Shaastra-2017 team.\n\n" +
         "This is a confirmation that the password for your account " + user.email + " - " + user.festID + " has just been changed\n\n" +
-        "Best,\nShaastra 2016 team";
+        "Best,\nShaastra 2017 team";
       var html_body = "<table style=\"background-color: #f3f3f3; font-family: verdana, tahoma, sans-serif; color: black; padding: 30px;\">" +
         "<tr> <td>" +
         "<h2>Hello " + user.name + " " + user.secondName + ",</h2>" +
-        "<p>Greetings from Shaastra-2016 team.</p>" +
+        "<p>Greetings from Shaastra-2017 team.</p>" +
         "<p>This is a confirmation that the password for your account <b>" + user.email + " - " + user.festID + "</b> has just been changed</p>" +
-        "Best,<br/> Shaastra 2016 team</p> </td> </tr> </table>";
+        "Best,<br/> Shaastra 2017 team</p> </td> </tr> </table>";
       var params = {
         to: user.email,
         from: 'support@shaastra.org',
         fromname: 'Shaastra WebOps',
         subject: 'Your Shaastra account password has been changed',
-        replyto: 'chinni@shaastra.org',
+        replyto: 'minu@shaastra.org',
         text: text_body,
         html: html_body
       };
