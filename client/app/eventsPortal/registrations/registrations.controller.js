@@ -22,9 +22,9 @@ angular.module('erp2015App')
         console.log(response.data);
     		$scope.eventDetails = response.data;
 
-        $scope.fileDownloadLink = "http://localhost:8080/api/imgs/" + $scope.eventDetails._id;
+        $scope.fileDownloadLink = "http://shaastra.org:8080/api/imgs/" + $scope.eventDetails._id;
 
-        $http.get('http://localhost:8080/api/imgs/files/' + $scope.eventDetails._id).then(function (response){
+        $http.get('http://shaastra.org:8080/api/imgs/files/' + $scope.eventDetails._id).then(function (response){
           $scope.files = response.data;
           console.log(response.data);
         });
