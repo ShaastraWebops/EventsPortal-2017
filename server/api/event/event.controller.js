@@ -58,6 +58,20 @@ exports.show = function(req, res) {
   });
 };
 
+exports.getEventsInWorkshopCategory = function(req, res) {
+  Event.find({ 'eventCategory': '57e29fa4a65edf661ac45204', 'workshopCategory': req.params.workshopCat })
+  .populate('eventTabs')
+  .populate('assignees', 'name phoneNumber')
+  .populate('marqueeNotifs')
+  .sort({'name':1})
+  .exec(function (err, event) {
+    if(err) { return handleError(res, err); }
+    if(!event) { return res.sendStatus(404); }
+    return res.json(event);
+  });
+};
+
+
 // Get a single event
 exports.showWeb = function(req, res) {
   Event.findById(req.params.id)

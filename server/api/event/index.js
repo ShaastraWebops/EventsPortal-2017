@@ -14,6 +14,7 @@ router.get('/forSearch', controller.forSearch);
 router.get('/showWeb/:id', controller.showWeb);
 router.get('/:id', controller.show);
 router.get('/getMultiple/:id', controller.getMultiple);
+router.get('/workshops/:workshopCat', controller.getEventsInWorkshopCategory);
 router.post('/', auth.hasRole('superCoord'), controller.create);
 router.put('/:id', auth.hasRole('coord'), controller.update);
 router.patch('/:id', auth.hasRole('coord'), controller.update);

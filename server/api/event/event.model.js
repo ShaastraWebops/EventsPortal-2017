@@ -32,7 +32,8 @@ var EventSchema = new Schema({
   registeredTeams: [{ type: Schema.Types.ObjectId, ref: 'Team' }],
   winners: [{ type: Schema.Types.ObjectId, ref: 'Team' }],
   selectedTeams: [{ type: Schema.Types.ObjectId, ref: 'Team' }],
-  marqueeNotifs: [{ type: Schema.Types.ObjectId, ref: 'MarqueeNotif' }]
+  marqueeNotifs: [{ type: Schema.Types.ObjectId, ref: 'MarqueeNotif' }],
+  workshopCategory:{ type: String, default: "" }
   // sponsoredBy: [{ type: Schema.Types.ObjectId, ref: 'SponsoredBy' }]
   // TODO: tdpForm: { type: Schema.Types.ObjectId, ref: 'Tdp' }
 });
