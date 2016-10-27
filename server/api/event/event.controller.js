@@ -17,7 +17,7 @@ exports.index = function(req, res) {
 };
 
 exports.forSearch = function(req, res) {
-  Event.find({'acceptedByAdmin': true}, 'name _id eventCategory imagename imageid info venue')
+  Event.find({}, 'name _id eventCategory imagename imageid info venue')
   .exec(function (err, events) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(events);
