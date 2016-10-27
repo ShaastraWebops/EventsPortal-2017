@@ -33,6 +33,7 @@ var UserSchema = new Schema({
   age: Number,
   branch: { type: String, default: '' },
   college: { type: Schema.Types.ObjectId, ref: 'College' },
+  otherCollege: { type: String, default: '' },
   //1 for school student, 0 for false
   schoolStudent: { type: Boolean, default: false },
   wantAccomodation: { type: Boolean, default: false },
