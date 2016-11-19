@@ -30,7 +30,7 @@
           <td>{{ $index + 1 }}</td>
           <td>{{ team.teamName }}</td>
           <td>{{ team.teamLeader.name }}</td>
-          <td>{{ team.teamLeader._id }}</td>
+          <td>{{ team.teamLeader.festID }}</td>
           <td>{{ team.teamLeader.email }}</td>
           <td>{{ team.teamLeader.phoneNumber }}</td>
           <td ng-repeat = "member in team.teamMembers track by $index">{{ member.name }} - {{member._id}}<br></td>

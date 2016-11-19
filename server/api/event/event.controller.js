@@ -47,7 +47,7 @@ exports.show = function(req, res) {
   .exec(function (err, events) {
 
       User.populate(events, {
-        path: 'registeredTeams.teamLeader'
+        path: 'registeredTeams.teamLeader registeredTeams.teamMembers'
       }, function(err, event){
         if(err) { return handleError(res, err); }
         if(!event) { return res.sendStatus(404); }
