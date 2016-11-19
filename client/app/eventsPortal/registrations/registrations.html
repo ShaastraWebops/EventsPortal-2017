@@ -14,27 +14,27 @@
 
     <table style="width:100%; font-family: arial, sans-serif; border-collapse: collapse;" id="table1">
       <thead>
-        <tr class="registrationTableRow">
-          <th class="registrationTable">No.</th>
-          <th class="registrationTable">Team Name</th>
-          <th class="registrationTable">Captain Name</th>
-          <th class="registrationTable">Captain ID</th>
-          <th class="registrationTable">Captain Email</th>
-          <th class="registrationTable">Captain Phone</th>
-          <th class="registrationTable">Team Members</th>
-          <th class="registrationTable" ng-if="eventDetails.requireTDP">TDP</th>
+        <tr>
+          <th>No.</th>
+          <th>Team Name</th>
+          <th>Captain Name</th>
+          <th>Captain ID</th>
+          <th>Captain Email</th>
+          <th>Captain Phone</th>
+          <th>Team Members</th>
+          <th ng-if="eventDetails.requireTDP">TDP</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="team in eventDetails.registeredTeams track by $index">
-          <td class="registrationTable">{{ $index + 1 }}</td>
-          <td class="registrationTable">{{ team.teamName }}</td>
-          <td class="registrationTable">{{ team.teamLeader.name }}</td>
-          <td class="registrationTable">{{ team.teamLeader.festID }}</td>
-          <td class="registrationTable">{{ team.teamLeader.email }}</td>
-          <td class="registrationTable">{{ team.teamLeader.phoneNumber }}</td>
-          <td class="registrationTable"><p ng-repeat = "member in team.teamMembers track by $index">{{ member.name }} - {{member.festID}}<br></p></td>
-          <td class="registrationTable"><div ng-repeat="file in files"><a ng-if="team._id == file.split('-')[1].split('.')[0]" ng-href="{{fileDownloadLink}}/{{file}}" target="_blank">{{file}}</a></div></td>
+          <td>{{ $index + 1 }}</td>
+          <td>{{ team.teamName }}</td>
+          <td>{{ team.teamLeader.name }}</td>
+          <td>{{ team.teamLeader.festID }}</td>
+          <td>{{ team.teamLeader.email }}</td>
+          <td>{{ team.teamLeader.phoneNumber }}</td>
+          <td><p ng-repeat = "member in team.teamMembers track by $index">{{ member.name }} - {{member.festID}}<br></p></td>
+          <td><div ng-repeat="file in files"><a ng-if="team._id == file.split('-')[1].split('.')[0]" ng-href="{{fileDownloadLink}}/{{file}}" target="_blank">{{file}}</a></div></td>
         </tr>
       </tbody>
     </table>

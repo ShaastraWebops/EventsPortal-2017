@@ -1,9 +1,9 @@
-.registrationTable{
+td, th{
 	border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 
-.registrationTableRow :nth-child(even) {
+tr:nth-child(even) {
     background-color: #dddddd;
 }
