@@ -56,6 +56,7 @@ exports.show = function(req, res) {
           College.populate(event, {
             path: 'registeredTeams.teamLeader.college'
           }, function(err, eventFinal){
+            console.log(eventFinal);
             if(err) { return handleError(res, err); }
             if(!event) { return res.sendStatus(404); }
             return res.json(eventFinal);
