@@ -20,10 +20,11 @@ tr:nth-child(even) {
       </h2>
     </md-toolbar>
     
-    <button class="btn btn-link" ng-click="exportToExcel('#table1')">
+    <button class="btn btn-link" ng-click="exportData()">
       <span class="glyphicon glyphicon-share"></span> Export to Excel
     </button>
 
+    <div id="exportable">
     <table style="width:100%; font-family: arial, sans-serif; border-collapse: collapse;" id="table1">
       <thead>
         <tr>
@@ -52,6 +53,7 @@ tr:nth-child(even) {
         </tr>
       </tbody>
     </table>
+    </div>
 
   </div>
 
