@@ -4,6 +4,7 @@ var _ = require('lodash');
 var EventList = require('../eventList/eventList.model');
 var Event = require('./event.model');
 var User = require('../user/user.model');
+var College = require('../college/college.model');
 
 // Get list of events
 exports.index = function(req, res) {
@@ -47,11 +48,19 @@ exports.show = function(req, res) {
   .exec(function (err, events) {
 
       User.populate(events, {
-        path: 'registeredTeams.teamLeader registeredTeams.teamMembers registeredTeams.teamLeader.college'
+        path: 'registeredTeams.teamLeader registeredTeams.teamMembers'
       }, function(err, event){
         if(err) { return handleError(res, err); }
         if(!event) { return res.sendStatus(404); }
-        return res.json(event);
+        else{
+          College.populate(event, {
+            path: 'registeredTeams.teamLeader.college'
+          }, function(err, eventFinal){
+            if(err) { return handleError(res, err); }
+            if(!event) { return res.sendStatus(404); }
+            return res.json(eventFinal);
+          });
+        }
       });
 
     
