@@ -226,6 +226,9 @@ exports.destroy = function(req, res) {
             }
           );
         }
+      team.remove(function(){
+        res.send(204);
+      });
 
       } else {
         return res.send(403).json('Only team leader can delete the team');
