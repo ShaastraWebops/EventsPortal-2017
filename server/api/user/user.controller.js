@@ -105,7 +105,8 @@ exports.index = function (req, res) {
     if(err) return res.json(500, err);
     res.status(200).json(users);
   })
-  .populate('department', 'name');
+  .populate('department', 'name')
+  .populate('collegeName');
 };
 
 /**
