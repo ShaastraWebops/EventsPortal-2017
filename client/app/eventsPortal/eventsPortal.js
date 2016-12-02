@@ -11,6 +11,11 @@ angular.module('erp2015App')
           allow: ['superCoord', 'core', 'admin']
         }                
       })
+      // .state('totalRegistrations', {
+      //   url: '/eventsPortal/totalRegistrations',
+      //   templateUrl: 'app/eventsPortal/totalRegistrations/totalRegistrations.html',
+      //   controller: 'TotalRegistrationsCtrl'               
+      // })
       .state('eventsPortalDashboard', {
         url: '/eventsPortal/dashboard',
         templateUrl: 'app/eventsPortal/dashboard/dashboard.html',
