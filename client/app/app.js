@@ -14,7 +14,8 @@ angular.module('erp2015App', [
   'ngMaterial',
   'truncate',
   'ngMdIcons',
-  'ngImgCrop'
+  'ngImgCrop',
+  'ngFileSaver'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

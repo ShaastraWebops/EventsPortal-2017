@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('erp2015App')
-  .factory('Excel',function($window){
+.factory('Excel',function($window){
     var uri='data:application/vnd.ms-excel;base64,',
       template='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
       base64=function(s){return $window.btoa(unescape(encodeURIComponent(s)));},
@@ -15,35 +15,25 @@ angular.module('erp2015App')
       }
     };
   })
-  .controller('RegistrationsCtrl', function ($scope, EventsPortalService, $state, $http, $mdDialog, Auth, $stateParams, Excel, $timeout, $mdToast, FileSaver, Blob) {
+  .controller('TotalRegistrationsCtrl', function ($scope, EventsPortalService, $state, $http, $mdDialog, Auth, $stateParams, Excel, $timeout, $mdToast, FileSaver, Blob) {
     
-    $http.get('/api/events/' + $stateParams.eventId)
+    $http.get('/api/users')
     	.then(function (response) {
-        console.log(response.data);
-    		$scope.eventDetails = response.data;
-
-        $scope.fileDownloadLink = "http://shaastra.org:8080/api/imgs/" + $scope.eventDetails._id;
-
-        $http.get('http://shaastra.org:8080/api/imgs/files/' + $scope.eventDetails._id).then(function (response){
-          $scope.files = response.data;
-          console.log(response.data);
-        });
-
-        
+    		$scope.allUsers = response.data;
     	});
 
       $scope.exportData = function () {
         var blob = new Blob([document.getElementById('exportable').innerHTML], {
             type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
         });
-        FileSaver.saveAs(blob, $scope.eventDetails.name + "_registrations.xls");
+        FileSaver.saveAs(blob, "total_registrations.xls");
       };
 
       $scope.exportToExcel=function(tableId){ // ex: '#my-table'
             $scope.exportHref = Excel.tableToExcel(tableId, 'sheet name');
             $timeout(function() {
             var link = document.createElement('a');
-            link.download = $scope.eventDetails.name + "_registrations.xlsx";
+            link.download = "total_registrations.xlsx";
             link.href = $scope.exportHref;
             link.click();
             }, 100);

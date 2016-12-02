@@ -1,0 +1,54 @@
+<style type="text/css">
+  td, th{
+  border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+</style>
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div layout="row" layout-margin style="width:100%">
+  <div class="eventsPortal" style="width:97%">
+    <md-toolbar class="md-theme-light">
+      <h2 class="md-toolbar-tools">
+        <span>Total Registrations</span>
+      </h2>
+    </md-toolbar>
+    
+    <button class="btn btn-link" ng-click="exportData()">
+      <span class="glyphicon glyphicon-share"></span> Export to Excel
+    </button>
+
+    <div id="exportable">
+    <table style="width:100%; font-family: arial, sans-serif; border-collapse: collapse;" id="table1">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Name</th>
+          <th>Shaastra ID</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>College</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in allUsers track by $index">
+          <td>{{ $index + 1 }}</td>
+          <td>{{ user.firstName }} {{user.lastName}}</td>
+          <td>{{ user.festID }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phoneNumber }}</td>
+          <td>{{ user.collegeName }}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+  </div>
+
+</div>
