@@ -39,11 +39,11 @@ tr:nth-child(even) {
       <tbody>
         <tr ng-repeat="user in allUsers track by $index">
           <td>{{ $index + 1 }}</td>
-          <td>{{ user.firstName }} {{user.lastName}}</td>
+          <td>{{ user.name }} {{user.secondName}}</td>
           <td>{{ user.festID }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.phoneNumber }}</td>
-          <td>{{ user.collegeName }}</td>
+          <td>{{ user.college.collegeName }}</td>
         </tr>
       </tbody>
     </table>

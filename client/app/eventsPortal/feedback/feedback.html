@@ -1,0 +1,78 @@
+<style type="text/css">
+  td, th{
+  border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+</style>
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div layout="row" layout-margin style="width:100%">
+  <div class="eventsPortal" style="width:97%">
+    <md-toolbar class="md-theme-light">
+      <h2 class="md-toolbar-tools">
+        <span>Feedback</span>
+      </h2>
+    </md-toolbar>
+    
+    <button class="btn btn-link" ng-click="exportData()">
+      <span class="glyphicon glyphicon-share"></span> Export to Excel
+    </button>
+
+    <div id="exportable">
+    <table style="width:100%; font-family: arial, sans-serif; border-collapse: collapse;" id="table1">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Event Name</th>
+          <th>Comment</th>
+          <th>Q1</th>
+          <th>Q2</th>
+          <th>Q3</th>
+          <th>Q4</th>
+          <th>Q5</th>
+          <th>Q6</th>
+          <th>Q7</th>
+          <th>Q8</th>
+          <th>Q9</th>
+          <th>Q10</th>
+          <th>Q11</th>
+          <th>Q12</th>
+          <th>Q13</th>
+          <th>Q14</th>
+          <th>Q15</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="feedback in totalFeedback track by $index">
+          <td>{{ $index + 1 }}</td>
+          <td>{{ feedback.eventName }}</td>
+          <td>{{ feedback.comment }}</td>
+          <td>{{ feedback.q1 }}</td>
+          <td>{{ feedback.q2 }}</td>
+          <td>{{ feedback.q3 }}</td>
+          <td>{{ feedback.q4 }}</td>
+          <td>{{ feedback.q5 }}</td>
+          <td>{{ feedback.q6 }}</td>
+          <td>{{ feedback.q7 }}</td>
+          <td>{{ feedback.q8 }}</td>
+          <td>{{ feedback.q9 }}</td>
+          <td>{{ feedback.q10 }}</td>
+          <td>{{ feedback.q11 }}</td>
+          <td>{{ feedback.q12 }}</td>
+          <td>{{ feedback.q13 }}</td>
+          <td>{{ feedback.q14 }}</td>
+          <td>{{ feedback.q15 }}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+  </div>
+
+</div>

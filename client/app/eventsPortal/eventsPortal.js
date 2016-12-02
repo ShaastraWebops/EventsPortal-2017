@@ -14,7 +14,18 @@ angular.module('erp2015App')
       .state('totalRegistrations', {
         url: '/eventsPortal/totalRegistrations',
         templateUrl: 'app/eventsPortal/totalRegistrations/totalRegistrations.html',
-        controller: 'TotalRegistrationsCtrl'               
+        controller: 'TotalRegistrationsCtrl',
+        access: {
+          allow: ['admin']
+        }              
+      })
+      .state('totalFeedback', {
+        url: '/eventsPortal/feedback',
+        templateUrl: 'app/eventsPortal/feedback/feedback.html',
+        controller: 'TotalFeedbackCtrl',
+        access: {
+          allow: ['admin']
+        }              
       })
       .state('eventsPortalDashboard', {
         url: '/eventsPortal/dashboard',

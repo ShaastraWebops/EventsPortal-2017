@@ -5,7 +5,7 @@ var controller = require('./feedback.controller');
 
 var router = express.Router();
 
-router.get('/', controller.index);
+router.get('/', auth.hasRole('admin'), controller.index);
 // router.get('/:id', controller.show);
 router.post('/', controller.create);
 // router.put('/:id', controller.update);
