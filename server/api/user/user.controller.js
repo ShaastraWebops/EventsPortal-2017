@@ -101,7 +101,7 @@ exports.getSisFellows = function(req, res) {
 };
 
 exports.index = function (req, res) {
-  User.find({}, '-salt -hashedPassword -lastSeen', function (err, users) {
+  User.find({}, '-salt -hashedPassword -lastSeen -provider -hostel -teams -barcodeID -cgpa -summerLocation -role -city -degree -state -stream -roomNumber -rollNumber -gender -branch -otherCollege -dateCreated -sendEmails -emailVerified -schoolStudent -__v -_id -interestedInShaastraFellowship -updatedOn -createdOn -age -selfTeam -college', function (err, users) {
     if(err) return res.json(500, err);
     res.status(200).json(users);
   })
