@@ -6,6 +6,8 @@ var controller = require('./college.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.post('/generateCheckSum/:id', controller.generateCheckSum);
+router.post('/verifyPayment/:id', controller.verifyPayment);
 // router.get('/:id', controller.show);
 // router.post('/', controller.create);
 // router.put('/:id', controller.update);

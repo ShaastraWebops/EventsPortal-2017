@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>Merchant Check Out Page</title>
+</head>
+<body>
+<% if (restdata == 'true') { 	%>
+	<center><h1>Payment Successful</h1></center>
+     <%     }else
+          { 	%>
+            <center><h1>Payment Unsuccessful</h1></center>
+       <%  }	%>
+       <center><h3>Transaction Id: <%= paramlist['BANKTXNID'] %></h3> </center>
+       <center><h3>Transaction Amount:<%= paramlist['CURRENCY'] %> <%= paramlist['TXNAMOUNT'] %></h3> </center><br><br>
+		<center><a href="http://shaastra.org">Go back to shaastra.org</a></center>
+</body>
+</html>

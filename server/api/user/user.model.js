@@ -75,7 +75,8 @@ var UserSchema = new Schema({
   google: {},
   github: {},
   selfTeam: { type: Schema.Types.ObjectId, ref: 'Team' },
-  teams: [{ type: Schema.Types.ObjectId, ref: 'Team' }]
+  teams: [{ type: Schema.Types.ObjectId, ref: 'Team' }],
+  paymentDetails: [String]
 });
 
 /**
