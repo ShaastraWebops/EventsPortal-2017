@@ -15,11 +15,11 @@ exports.index = function(req, res) {
   });
 };
 
-var MID = '';
-var PAYTM_MERCHANT_KEY = '';
-var WEBSITE = '';
-var CHANNEL_ID =  '';
-var INDUSTRY_TYPE_ID = '';
+var MID = 'Indian98368171296079';
+var PAYTM_MERCHANT_KEY = 'XPSYivC4MsNSpAz5';
+var WEBSITE = 'indweb';
+var CHANNEL_ID =  'WEB';
+var INDUSTRY_TYPE_ID = 'Retail';
 exports.generateCheckSum = function(req, res) {
   var CALLBACK_URL = "http://shaastra.org:8001/api/colleges/verifyPayment/" + req.params.id;
   var paramlist = req.body;
@@ -60,7 +60,7 @@ exports.verifyPayment = function(req, res) {
   if(checksum.verifychecksum(paramlist, PAYTM_MERCHANT_KEY) && paramlist.STATUS == "TXN_SUCCESS"){
     console.log("true");
     User.findByIdAndUpdate(
-      '57bcacfe9a881bfa1d6a2090',
+      req.params.id,
       {$push: {"paymentDetails": complete}},
       {new : true},
       function(err, model) {
