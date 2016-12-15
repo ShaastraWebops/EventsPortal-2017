@@ -27,6 +27,11 @@ angular.module('erp2015App')
           allow: ['admin']
         }              
       })
+      .state('funzone', {
+        url: '/eventsPortal/funzone',
+        templateUrl: 'app/eventsPortal/funzone/funzone.html',
+        controller: 'FunzoneCtrl'              
+      })
       .state('eventsPortalDashboard', {
         url: '/eventsPortal/dashboard',
         templateUrl: 'app/eventsPortal/dashboard/dashboard.html',

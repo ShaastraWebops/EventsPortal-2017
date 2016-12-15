@@ -1,0 +1,56 @@
+<style type="text/css">
+  td, th{
+  border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+</style>
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div layout="row" layout-margin style="width:100%">
+  <div class="eventsPortal" style="width:97%">
+    <md-toolbar class="md-theme-light">
+      <h2 class="md-toolbar-tools">
+        <span>Feedback</span>
+      </h2>
+    </md-toolbar>
+    
+    <button class="btn btn-link" ng-click="exportData()">
+      <span class="glyphicon glyphicon-share"></span> Export to Excel
+    </button>
+
+    <div id="exportable">
+    <table style="width:100%; font-family: arial, sans-serif; border-collapse: collapse;" id="table1">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Slot Date</th>
+          <th>Slot Timing</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="slot in slots track by $index">
+          <td>{{ $index + 1 }}</td>
+          <td>{{ slot.slot.split("|")[0] }}</td>
+          <td>{{ slot.slot.split("|")[1] }}</td>
+          <td><p ng-repeat="participant in slot.participants track by $index">{{ participant.name }} {{ participant.secondName }}</p></td>
+          <td><p ng-repeat="participant in slot.participants track by $index">{{ participant.email }}</p></td>
+          <td><p ng-repeat="participant in slot.participants track by $index">{{ participant.phoneNumber }}</p></td>
+          <td><p ng-repeat="participant in slot.participants track by $index"><button ng-click = "remove(slot._id, participant._id)">Remove {{ participant.name }}</button></p></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+  </div>
+
+</div>
