@@ -36,6 +36,7 @@ tr:nth-child(even) {
           <th>Captain Phone</th>
           <th>Captain College</th>
           <th>Team Members</th>
+          <th>Team Members' emails</th>
           <th ng-if="eventDetails.requireTDP">TDP</th>
         </tr>
       </thead>
@@ -49,6 +50,7 @@ tr:nth-child(even) {
           <td>{{ team.teamLeader.phoneNumber }}</td>
           <td>{{ team.teamLeader.college.collegeName }}</td>
           <td><p ng-repeat = "member in team.teamMembers track by $index">{{ member.name }} - {{member.festID}}<br></p></td>
+          <td><p ng-repeat = "member in team.teamMembers track by $index">{{ member.email }}<br></p> </td>
           <td><div ng-repeat="file in files"><a ng-if="team._id == file.split('-')[1].split('.')[0]" ng-href="{{fileDownloadLink}}/{{file}}" target="_blank">{{file}}</a></div></td>
         </tr>
       </tbody>
