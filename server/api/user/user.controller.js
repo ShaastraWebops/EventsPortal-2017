@@ -416,7 +416,7 @@ exports.show = function (req, res, next) {
 };
 
 exports.controlRoom = function (req, res, next) {
-  var shaastraId = req.params.id;
+  var shaastraId = "SHA17" + req.params.id;
 
   User.findOne({'festID':shaastraId})
   .populate('college', 'collegeName')
